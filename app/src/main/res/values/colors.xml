@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Setting -->
+    <color name="colorPrimary">#C62828</color>
+    <color name="colorPrimaryDark">#B71C1C</color>
+    <color name="colorAccent">#7D95B3</color>
+    <color name="gray">#DDDDDD</color>
+    <color name="charcoal">#898989</color>
+
+</resources>

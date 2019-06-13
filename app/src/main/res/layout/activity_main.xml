@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable name="mainViewModel"
+                  type="com.image.model.view.MainViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <EditText
+                android:id="@+id/etSearchTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_search_background"
+                android:hint="@string/ab_search_text_hint"
+                android:inputType="text"
+                android:ellipsize="end"
+                android:lines="1"
+                android:padding="@dimen/spacing_10dp"
+                android:layout_margin="@dimen/spacing_10dp"
+                android:importantForAutofill="no"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="o"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10dp"
+                android:visibility="@{safeUnbox(mainViewModel.isDataEmpty) ? View.GONE : View.VISIBLE}"
+                android:scrollbars="vertical"
+                android:scrollbarThumbVertical="@color/colorPrimary"
+                android:scrollbarSize="2dp"
+                app:searchImageAdapter="@{mainViewModel.searchImageAdapter}"
+                app:searchImageItem="@{mainViewModel}"
+                app:searchAdd="@{safeUnbox(mainViewModel.isViewAttach)}"
+                app:layout_constraintTop_toBottomOf="@+id/etSearchTitle"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:drawableTop="@drawable/icon_not_response"
+                  android:drawablePadding="@dimen/spacing_10dp"
+                  android:textSize="20sp"
+                  android:text="@string/data_empty_msg"
+                  android:textColor="@color/charcoal"
+                  android:visibility="@{safeUnbox(mainViewModel.isDataEmpty) ? View.VISIBLE : View.GONE}"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/etSearchTitle"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

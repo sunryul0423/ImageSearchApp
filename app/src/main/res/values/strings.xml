@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ImageApp</string>
+    <string name="disk_cache_dir_name">image_cache</string>
+    <string name="ab_search_text_hint">검색어를 입력하세요.</string>
+    <string name="network_error_msg">네트워크 오류가 발생하였습니다.\n사용 중인 데이터 통신 환경을 확인해주세요.</string>
+    <string name="data_empty_msg">검색 결과가 존재하지 않습니다.</string>
+    <string name="detail_img_size">이미지 원본 Size : %s</string>
+    <string name="detail_img_click_coment">★ 이미지 클릭시 관련 페이지로 이동합니다.</string>
+</resources>
