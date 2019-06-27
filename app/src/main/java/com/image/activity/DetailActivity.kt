@@ -4,14 +4,17 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
-import com.jakewharton.rxbinding2.view.RxView
 import com.image.R
 import com.image.databinding.ActivityDetailBinding
 import com.image.model.data.SearchImageViewModel
 import com.image.model.view.SearchImageViewModelFactory
 import com.image.utils.DETAIL
+import com.jakewharton.rxbinding2.view.RxView
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_detail.*
+import org.koin.android.ext.android.inject
+import java.util.concurrent.TimeUnit
 
 /**
  * 상세화면 View
@@ -22,9 +25,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
  */
 class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
-    private val searchImageViewModelFactory by lazy {
-        SearchImageViewModelFactory()
-    }
+    private val searchImageViewModelFactory: SearchImageViewModelFactory by inject()
 
     override val layoutResourceId: Int
         get() = R.layout.activity_detail
@@ -43,6 +44,12 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
                 datetime = intentViewModel.datetime
                 size = intentViewModel.size
             }
+
+        searchImageViewModel.addDisposable(
+            Observable.interval(1, TimeUnit.SECONDS)
+                .take(3600)
+                .subscribe(::println)
+        )
 
         supportActionBar?.title = searchImageViewModel.displaySiteName
 

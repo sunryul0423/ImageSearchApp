@@ -8,6 +8,7 @@ import io.reactivex.disposables.Disposable
 
 /**
  * 공통적으로 필요한 변수,함수 정의한 ViewModel
+ * Rx에 관련된 메소드 사용시 메모리 해제를 위해 lifecycleOwner(ViewModelProviders) 꼭 설정해준다.
  * @author SR.Park
  * @constructor Kakao Image Api
  * @since 2019.02.20

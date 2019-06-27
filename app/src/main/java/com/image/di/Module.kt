@@ -2,6 +2,7 @@ package com.image.di
 
 import com.image.interfaces.ApiRequest
 import com.image.model.view.MainViewModelFactory
+import com.image.model.view.SearchImageViewModelFactory
 import com.image.utils.BASE_URL
 import okhttp3.CookieJar
 import okhttp3.OkHttpClient
@@ -52,7 +53,12 @@ val mainModule = module {
     }
 }
 
+val searchImageModule = module {
+    factory {
+        SearchImageViewModelFactory()
+    }
+}
 /**
  * 모듈 리스트
  */
-val appModule = listOf(apiModule, mainModule)
+val appModule = listOf(apiModule, mainModule, searchImageModule)
